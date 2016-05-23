@@ -1,0 +1,16 @@
+PODS:
+  - Failable (1.0.0)
+
+DEPENDENCIES:
+  - Failable (from `..`)
+
+EXTERNAL SOURCES:
+  Failable:
+    :path: ..
+
+SPEC CHECKSUMS:
+  Failable: 8f8773b660ba62c802ea5ea7b693aa86c30f9048
+
+PODFILE CHECKSUM: 4b3f7a749b29624f7957d91d0f33b636c19413cf
+
+COCOAPODS: 1.0.0
