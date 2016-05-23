@@ -1,0 +1,6 @@
+framework module Pods_FailableTests {
+  umbrella header "Pods-FailableTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

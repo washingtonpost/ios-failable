@@ -1,0 +1,6 @@
+framework module Failable {
+  umbrella header "Failable-umbrella.h"
+
+  export *
+  module * { export * }
+}

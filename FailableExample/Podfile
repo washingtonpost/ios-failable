@@ -7,5 +7,9 @@ source 'git@github.com:WPMedia/Podspecs.git'
 use_frameworks!
 
 target 'FailableExample' do
-	pod 'Failable', :path => '..'
+  pod 'Failable', :path => '..'
+end
+
+target 'FailableTests' do
+  pod 'Failable', :path => '..'
 end
