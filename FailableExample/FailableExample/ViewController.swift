@@ -63,14 +63,14 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         let  cell = tableView.dequeueReusableCellWithIdentifier(identifier) ?? UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: identifier)
 
         guard let name = charactersArray[indexPath.row].name,
-            imageURLString = charactersArray[indexPath.row].thumbnailURLString else {
+            imageURL = charactersArray[indexPath.row].thumbnailURL else {
             return cell
         }
 
         if let textLabel = cell.textLabel,
             imageView = cell.imageView {
                 textLabel.text = name
-                imageView.af_setImageWithURL(NSURL(string: imageURLString)!, placeholderImage: UIImage(named: "placeholder"), filter: nil, imageTransition: .None, completion: { (response) -> Void in
+                imageView.af_setImageWithURL(imageURL, placeholderImage: UIImage(named: "placeholder"), filter: nil, imageTransition: .None, completion: { (response) -> Void in
                     // if needed
                 })
         }

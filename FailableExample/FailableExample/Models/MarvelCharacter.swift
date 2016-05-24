@@ -33,10 +33,10 @@ public class MarvelCharacter: Mappable {
     var modified: Double?
     var thumbnailPath: String?
     var thumbnailExtension: String?
-    var thumbnailURLString: String? {
+    var thumbnailURL: NSURL? {
         if let thumbnailPath = thumbnailPath,
             thumbnailExtension = thumbnailExtension {
-            return thumbnailPath + "/standard_large." + thumbnailExtension
+            return NSURL(string: thumbnailPath + "/standard_large." + thumbnailExtension)
         } else {
             return nil
         }
