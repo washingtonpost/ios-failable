@@ -14,8 +14,9 @@ import AlamofireImage
 class ViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
-    var charactersArray: [MarvelCharacter] = []
     
+    var charactersArray: [MarvelCharacter]?
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -27,8 +28,8 @@ class ViewController: UIViewController {
 
             switch data {
                 case .Success(let charactersWrapper):
+                    strongSelf.charactersArray = charactersWrapper.characters
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                        strongSelf.charactersArray = charactersWrapper.characters ?? []
                         strongSelf.tableView.reloadData()
                     })
                 case .Failure(let error):
@@ -54,7 +55,7 @@ class ViewController: UIViewController {
 
 extension ViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return charactersArray.count
+        return charactersArray?.count ?? 0
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -62,8 +63,8 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
 
         let  cell = tableView.dequeueReusableCellWithIdentifier(identifier) ?? UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: identifier)
 
-        guard let name = charactersArray[indexPath.row].name,
-            imageURL = charactersArray[indexPath.row].thumbnailURL else {
+        guard let name = charactersArray?[indexPath.row].name,
+            imageURL = charactersArray?[indexPath.row].thumbnailURL else {
             return cell
         }
 
