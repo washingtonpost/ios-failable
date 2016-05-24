@@ -27,14 +27,16 @@ class ViewController: UIViewController {
             }
 
             switch data {
-                case .Success(let charactersWrapper):
-                    strongSelf.charactersArray = charactersWrapper.characters
+                case .Success(let characters):
+                    strongSelf.charactersArray = characters
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
                         strongSelf.tableView.reloadData()
                     })
                 case .Failure(let error):
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                        strongSelf.presentAlert(error.localizedDescription)
+                        if let error = error {
+                            strongSelf.presentAlert(error.localizedDescription)
+                        }
                     })
             }
         }

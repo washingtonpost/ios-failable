@@ -16,9 +16,9 @@ import ObjectMapper
  - Success: The response and mapping was successful, resulting in Mappable data.
  - Failure: An error was encountered. The error that caused the failure.
  */
-public enum Failable<T where T:Mappable> {
+public enum Failable<T> {
     case Success(T)
-    case Failure(NSError)
+    case Failure(NSError?)
 
     /// Returns true if the Failible operation succeeded, or False if it failed.
     public var successful: Bool {
@@ -59,7 +59,7 @@ extension Failable: CustomStringConvertible {
         case .Success(let x):
             return "Success: \(x)"
         case .Failure(let error):
-            return "Failure: \(error.localizedDescription)"
+            return "Failure: \(error?.localizedDescription)"
         }
     }
 }

@@ -9,19 +9,6 @@
 import Foundation
 import ObjectMapper
 
-public class MarvelCharactersWrapper: Mappable {
-
-    var characters: [MarvelCharacter]?
-
-    required public init?(_ map: Map){
-
-    }
-
-    public func mapping(map: Map) {
-        characters <- (map["results"])
-    }
-}
-
 public class MarvelCharacter: Mappable {
     var id: Int?
     var name: String?

@@ -51,12 +51,12 @@ public class FailableAPIExample {
         return "\(baseURLString)/v1/public/characters"
     }
 
-    public func getMarvelCharacters(completion: ((data: Failable<MarvelCharactersWrapper>) -> Void)?) {
+    public func getMarvelCharacters(completion: ((data: Failable<[MarvelCharacter]>) -> Void)?) {
         Alamofire.request(.GET, charactersURLString, parameters: params)
             .responseJSON { response in
                 if let JSON = response.result.value,
                     data = JSON["data"] as? [String: AnyObject],
-                    characters = Mapper<MarvelCharactersWrapper>().map(data) {
+                    characters = Mapper<MarvelCharacter>().mapArray(data["results"]) {
                     completion?(data: .Success(characters))
                 } else {
                     let userInfo: [NSObject : AnyObject] = [ NSLocalizedDescriptionKey :
