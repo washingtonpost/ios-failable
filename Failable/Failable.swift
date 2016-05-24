@@ -9,11 +9,18 @@
 import Foundation
 import ObjectMapper
 
+/**
+ Failable is an object returned in mappable completions, using the Either monad,
+ the response is either successful or an error was encountered.
+
+ - Success: The response and mapping was successful, resulting in Mappable data.
+ - Failure: An error was encountered. The error that caused the failure.
+ */
 public enum Failable<T where T:Mappable> {
     case Success(T)
     case Failure(NSError)
 
-    /// Returns true if the Fallible operation succeeded, or False if it failed.
+    /// Returns true if the Failible operation succeeded, or False if it failed.
     public var successful: Bool {
         switch self {
         case .Success:
@@ -23,7 +30,7 @@ public enum Failable<T where T:Mappable> {
         }
     }
 
-    /// Retrieves the value, if any, from the Fallible instance. If the operation failed, returns nil.
+    /// Retrieves the value, if any, from the Failible instance. If the operation failed, returns nil.
     public var value: T? {
         switch self {
             case .Success(let x):
@@ -33,7 +40,7 @@ public enum Failable<T where T:Mappable> {
         }
     }
 
-    /// Retrieves the error, if any, from the Fallible instance. If the opration succeeded, returns nil.
+    /// Retrieves the error, if any, from the Failible instance. If the opration succeeded, returns nil.
     public var error: NSError? {
         switch self {
         case .Success:
