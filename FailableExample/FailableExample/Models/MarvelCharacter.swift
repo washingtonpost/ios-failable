@@ -23,7 +23,6 @@ public class MarvelCharactersWrapper: Mappable {
 
     public func mapping(map: Map) {
         result <- map["results"]
-        print(map["results"])
     }
 }
 
@@ -32,7 +31,16 @@ public class MarvelCharacter: Mappable {
     var name: String?
     var characterDescription: String?
     var modified: Double?
-    var thumbnailPath: String??
+    var thumbnailPath: String?
+    var thumbnailExtension: String?
+    var thumbnailURLString: String? {
+        if let thumbnailPath = thumbnailPath,
+            thumbnailExtension = thumbnailExtension {
+            return thumbnailPath + "/standard_large." + thumbnailExtension
+        } else {
+            return nil
+        }
+    }
     //comics (ComicList, optional): A resource list containing comics which feature this character.,
     //stories (StoryList, optional): A resource list of stories in which this character appears.,
     //events (EventList, optional): A resource list of events in which this character appears.,
@@ -49,5 +57,6 @@ public class MarvelCharacter: Mappable {
         characterDescription    <- map["description"]
         modified                <- map["modified"]
         thumbnailPath           <- map["thumbnail.path"]
+        thumbnailExtension      <- map["thumbnail.extension"]
     }
 }

@@ -8,6 +8,8 @@
 
 import UIKit
 import Failable
+import Alamofire
+import AlamofireImage
 
 class ViewController: UIViewController {
 
@@ -16,7 +18,8 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+
+        //ToNEVERDo add pagination
         FailableAPIExample.instance.getMarvelCharacters { [weak self] (data) in
             guard let strongSelf = self else {
                 return
@@ -51,7 +54,6 @@ class ViewController: UIViewController {
 
 extension ViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(charactersArray.count)
         return charactersArray.count
     }
 
@@ -60,11 +62,19 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
 
         let  cell = tableView.dequeueReusableCellWithIdentifier(identifier) ?? UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: identifier)
 
-        guard let name = charactersArray[indexPath.row].name else {
+        guard let name = charactersArray[indexPath.row].name,
+            imageURLString = charactersArray[indexPath.row].thumbnailURLString else {
             return cell
         }
 
-        cell.textLabel!.text = name
+        if let textLabel = cell.textLabel,
+            imageView = cell.imageView {
+                textLabel.text = name
+                imageView.af_setImageWithURL(NSURL(string: imageURLString)!, placeholderImage: UIImage(named: "placeholder"), filter: nil, imageTransition: .None, completion: { (response) -> Void in
+                    // if needed
+                })
+        }
+
         return cell
     }
 
