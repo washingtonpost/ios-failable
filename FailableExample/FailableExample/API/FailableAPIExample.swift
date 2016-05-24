@@ -44,7 +44,7 @@ public class FailableAPIExample {
         let timestamp = String(format: "%.0f", time * 1000)
         iniParams["ts"] = timestamp
         iniParams["hash"] = (timestamp + privateKey + publicKey).md5
-        iniParams["limit"] = "100"
+        iniParams["limit"] = "50"
         return iniParams
     }
     private var charactersURLString: String {
@@ -54,8 +54,9 @@ public class FailableAPIExample {
     public func getMarvelCharacters(completion: ((data: Failable<MarvelCharactersWrapper>) -> Void)?) {
         Alamofire.request(.GET, charactersURLString, parameters: params)
             .responseJSON { response in
-                if let JSON = response.result.value as? [String: AnyObject],
-                    characters = Mapper<MarvelCharactersWrapper>().map(JSON) {
+                if let JSON = response.result.value,
+                    data = JSON["data"] as? [String: AnyObject],
+                    characters = Mapper<MarvelCharactersWrapper>().map(data) {
                     completion?(data: .Success(characters))
                 } else {
                     let userInfo: [NSObject : AnyObject] = [ NSLocalizedDescriptionKey :

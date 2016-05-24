@@ -10,18 +10,20 @@ import Foundation
 import ObjectMapper
 
 public class MarvelCharactersWrapper: Mappable {
-    var result: [String: AnyObject]?
-    var characters: [MarvelCharacter]?
+    var result: [[String : AnyObject]]?
+    var characters: [MarvelCharacter]? {
+        return Mapper<MarvelCharacter>().mapArray(result)
+    }
 
     required public init?(_ map: Map){
         if map.JSONDictionary["results"] == nil {
             return nil
         }
-        self.characters = Mapper<MarvelCharacter>().mapArray(result)
     }
 
     public func mapping(map: Map) {
         result <- map["results"]
+        print(map["results"])
     }
 }
 
