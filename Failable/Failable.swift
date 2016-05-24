@@ -59,7 +59,7 @@ extension Failable: CustomStringConvertible {
         case .Success(let x):
             return "Success: \(x)"
         case .Failure(let error):
-            return "Failure: \(error)"
+            return "Failure: \(error.localizedDescription)"
         }
     }
 }
