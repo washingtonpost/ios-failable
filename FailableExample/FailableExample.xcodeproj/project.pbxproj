@@ -15,6 +15,8 @@
 		5E7BE41B1CF392A9000A2695 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E7BE4191CF392A9000A2695 /* LaunchScreen.storyboard */; };
 		5E7BE4291CF3944E000A2695 /* FailableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E7BE4281CF3944E000A2695 /* FailableTests.swift */; };
 		5E7BE4341CF397F1000A2695 /* Failable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E7BE4331CF397F1000A2695 /* Failable.swift */; };
+		5E7BE4411CF483D5000A2695 /* FailableAPIExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E7BE43F1CF483D5000A2695 /* FailableAPIExample.swift */; };
+		5E7BE4461CF485BE000A2695 /* MarvelCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E7BE4451CF485BE000A2695 /* MarvelCharacter.swift */; };
 		E7CA6875A3E7C9BAC4868917 /* Pods_FailableTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6784CD6D85081DAFBFD7710 /* Pods_FailableTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -42,6 +44,9 @@
 		5E7BE4281CF3944E000A2695 /* FailableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FailableTests.swift; sourceTree = "<group>"; };
 		5E7BE42A1CF3944E000A2695 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5E7BE4331CF397F1000A2695 /* Failable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Failable.swift; sourceTree = "<group>"; };
+		5E7BE4381CF3AC12000A2695 /* FailableExample-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FailableExample-Bridging-Header.h"; sourceTree = "<group>"; };
+		5E7BE43F1CF483D5000A2695 /* FailableAPIExample.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FailableAPIExample.swift; sourceTree = "<group>"; };
+		5E7BE4451CF485BE000A2695 /* MarvelCharacter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarvelCharacter.swift; sourceTree = "<group>"; };
 		BB244B0C6CFE5B04F03123B6 /* Pods-FailableExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FailableExample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FailableExample/Pods-FailableExample.debug.xcconfig"; sourceTree = "<group>"; };
 		DEE78AEA76F8043004D60B5F /* Pods-FailableTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FailableTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FailableTests/Pods-FailableTests.debug.xcconfig"; sourceTree = "<group>"; };
 		F6784CD6D85081DAFBFD7710 /* Pods_FailableTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FailableTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -101,12 +106,15 @@
 		5E7BE40F1CF392A9000A2695 /* FailableExample */ = {
 			isa = PBXGroup;
 			children = (
+				5E7BE43E1CF483D5000A2695 /* API */,
+				5E7BE4401CF483D5000A2695 /* Models */,
 				5E7BE4101CF392A9000A2695 /* AppDelegate.swift */,
 				5E7BE4121CF392A9000A2695 /* ViewController.swift */,
 				5E7BE4141CF392A9000A2695 /* Main.storyboard */,
 				5E7BE4171CF392A9000A2695 /* Assets.xcassets */,
 				5E7BE4191CF392A9000A2695 /* LaunchScreen.storyboard */,
 				5E7BE41C1CF392A9000A2695 /* Info.plist */,
+				5E7BE4381CF3AC12000A2695 /* FailableExample-Bridging-Header.h */,
 			);
 			path = FailableExample;
 			sourceTree = "<group>";
@@ -127,6 +135,22 @@
 			);
 			name = Failable;
 			path = ../Failable;
+			sourceTree = "<group>";
+		};
+		5E7BE43E1CF483D5000A2695 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				5E7BE43F1CF483D5000A2695 /* FailableAPIExample.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		5E7BE4401CF483D5000A2695 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				5E7BE4451CF485BE000A2695 /* MarvelCharacter.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		7A4AF9FAEE1705FFE76529E2 /* Pods */ = {
@@ -341,6 +365,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				5E7BE4341CF397F1000A2695 /* Failable.swift in Sources */,
+				5E7BE4461CF485BE000A2695 /* MarvelCharacter.swift in Sources */,
+				5E7BE4411CF483D5000A2695 /* FailableAPIExample.swift in Sources */,
 				5E7BE4131CF392A9000A2695 /* ViewController.swift in Sources */,
 				5E7BE4111CF392A9000A2695 /* AppDelegate.swift in Sources */,
 			);
@@ -474,10 +500,13 @@
 			baseConfigurationReference = BB244B0C6CFE5B04F03123B6 /* Pods-FailableExample.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = FailableExample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.washingtonpost.failable.FailableExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "FailableExample/FailableExample-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -486,10 +515,12 @@
 			baseConfigurationReference = FE710151AD4A9B3EE69C5C72 /* Pods-FailableExample.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = FailableExample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.washingtonpost.failable.FailableExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "FailableExample/FailableExample-Bridging-Header.h";
 			};
 			name = Release;
 		};

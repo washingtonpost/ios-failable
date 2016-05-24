@@ -13,5 +13,10 @@
     "git": "git@github.com/washingtonpost/ios-failable",
     "tag": "1.0.0"
   },
-  "source_files": "Failable/**/*"
+  "source_files": "Failable/**/*",
+  "dependencies": {
+    "ObjectMapper": [
+      "~> 1.3"
+    ]
+  }
 }

@@ -12,5 +12,7 @@ Pod::Spec.new do |s|
   s.platform     = :ios, "8.0"
   s.source       = { :git => "git@github.com/washingtonpost/ios-failable", :tag => s.version.to_s }
   s.source_files = 'Failable/**/*'
+
+  s.dependency 'ObjectMapper', '~> 1.3'
   
 end

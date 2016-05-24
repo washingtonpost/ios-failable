@@ -8,6 +8,7 @@ use_frameworks!
 
 target 'FailableExample' do
   pod 'Failable', :path => '..'
+  pod 'Alamofire', '~> 3.4'
 end
 
 target 'FailableTests' do

@@ -7,8 +7,9 @@
 //
 
 import Foundation
+import ObjectMapper
 
-public enum Failable<T> {
+public enum Failable<T where T:Mappable> {
     case Success(T)
     case Failure(NSError)
 
@@ -41,7 +42,11 @@ public enum Failable<T> {
             return error
         }
     }
+}
 
+// MARK: - CustomStringConvertible
+
+extension Failable: CustomStringConvertible {
     public var description: String {
         switch self {
         case .Success(let x):
