@@ -41,7 +41,7 @@ public enum Failable<T> {
     }
 
     /// Retrieves the error, if any, from the Failible instance. If the opration succeeded, returns nil.
-    public var error: ErrorType?? {
+    public var error: ErrorType? {
         switch self {
         case .Success:
             return nil
