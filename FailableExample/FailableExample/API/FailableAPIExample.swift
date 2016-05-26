@@ -30,6 +30,17 @@ extension String  {
     }
 }
 
+public enum FailableError: ErrorType {
+    case FailableExampleError(String)
+
+    public var description: String {
+        switch self {
+            case .FailableExampleError(let message):
+                return message
+        }
+    }
+}
+
 public class FailableAPIExample {
 
     static let instance = FailableAPIExample()
@@ -59,12 +70,7 @@ public class FailableAPIExample {
                     characters = Mapper<MarvelCharacter>().mapArray(data["results"]) {
                     completion?(data: .Success(characters))
                 } else {
-                    let userInfo: [NSObject : AnyObject] = [ NSLocalizedDescriptionKey :
-                        NSLocalizedString("No Content", value: "No content available", comment: ""),
-                        NSLocalizedFailureReasonErrorKey :
-                            NSLocalizedString("No Content", value: "No content available", comment: "")]
-                    let error = NSError(domain: "FailableAPIExample", code: 204, userInfo: userInfo)
-                    completion?(data: .Failure(error))
+                    completion?(data: .Failure(FailableError.FailableExampleError("no results")))
                 }
         }
     }

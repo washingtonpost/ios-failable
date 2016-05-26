@@ -34,8 +34,8 @@ class ViewController: UIViewController {
                     })
                 case .Failure(let error):
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                        if let error = error {
-                            strongSelf.presentAlert(error.localizedDescription)
+                        if let error = error as? FailableError {
+                            strongSelf.presentAlert(error.description)
                         }
                     })
             }

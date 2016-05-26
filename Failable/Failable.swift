@@ -18,7 +18,7 @@ import ObjectMapper
  */
 public enum Failable<T> {
     case Success(T)
-    case Failure(NSError?)
+    case Failure(ErrorType?)
 
     /// Returns true if the Failible operation succeeded, or False if it failed.
     public var successful: Bool {
@@ -41,7 +41,7 @@ public enum Failable<T> {
     }
 
     /// Retrieves the error, if any, from the Failible instance. If the opration succeeded, returns nil.
-    public var error: NSError? {
+    public var error: ErrorType?? {
         switch self {
         case .Success:
             return nil
@@ -59,7 +59,7 @@ extension Failable: CustomStringConvertible {
         case .Success(let x):
             return "Success: \(x)"
         case .Failure(let error):
-            return "Failure: \(error?.localizedDescription)"
+            return "Failure: \(error)"
         }
     }
 }
