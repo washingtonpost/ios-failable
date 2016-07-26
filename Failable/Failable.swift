@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import ObjectMapper
+
 
 /**
  Failable is an object returned in mappable completions, using the Either monad,
