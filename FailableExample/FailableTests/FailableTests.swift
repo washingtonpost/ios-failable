@@ -7,32 +7,39 @@
 //
 
 @testable import Failable
-@testable import ObjectMapper
 import Foundation
 import XCTest
 
-class Hero: Mappable {
+class Hero {
 
     var name: String?
     var cape: Bool?
     
-    required init?(_ map: Map){
-        
+    required init?(name: String, wearsCape: Bool){
+        self.name = name
+        self.cape = wearsCape
     }
-    
-    func mapping(map: Map) {
-        name <- map["name"]
-        cape <- map["cape"]
+
+}
+
+public enum FailableTestError: ErrorType {
+    case FailableExampleError(String)
+
+    public var description: String {
+        switch self {
+        case .FailableExampleError(let message):
+            return message
+        }
     }
 }
 
 class FailableTests: XCTestCase {
 
-    let error = NSError(domain: "FailableTests", code: 404, userInfo: nil)
+    //let error = NSError(domain: "FailableTests", code: 404, userInfo: nil)
+    let error = FailableTestError.FailableExampleError("no batman")
 
     var batman: Hero? {
-        let JSON = ["name": "Batman", "cape": true]
-        return Mapper<Hero>().map(JSON)
+        return Hero(name: "batman", wearsCape: true)
     }
 
     // MARK: - Is Success Tests
@@ -89,7 +96,7 @@ class FailableTests: XCTestCase {
         let result = Failable<Hero>.Failure(error)
         XCTAssertEqual(
             result.description,
-            "Failure: \(error.localizedDescription)",
+            "Failure: \(error)",
             "result description should match expected value for failure case"
         )
     }
