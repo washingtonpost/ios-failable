@@ -1,6 +1,6 @@
 {
   "name": "Failable",
-  "version": "0.2.2",
+  "version": "0.3.0",
   "summary": "Closure data using Either monad.",
   "description": "An iOS version of Either monad returning either data T or NSError",
   "homepage": "https://github.com/washingtonpost/ios-failable",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": "https://github.com/washingtonpost/ios-failable.git",
-    "tag": "0.2.2"
+    "tag": "0.3.0"
   },
   "source_files": "Failable/**/*.swift"
 }
