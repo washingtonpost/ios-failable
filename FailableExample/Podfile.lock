@@ -2,25 +2,39 @@ PODS:
   - Alamofire (3.4.1)
   - AlamofireImage (2.4.1):
     - Alamofire (~> 3.3)
-  - Failable (0.2.2)
+  - Failable (0.3.0)
   - ObjectMapper (1.3.0)
 
 DEPENDENCIES:
-  - Alamofire (~> 3.4)
-  - AlamofireImage (~> 2.0)
+  - Alamofire (from `git@github.com:Alamofire/Alamofire.git`, branch `swift2.3`)
+  - AlamofireImage (from `git@github.com:Alamofire/AlamofireImage.git`, branch `swift2.3`)
   - Failable (from `..`)
   - ObjectMapper
 
 EXTERNAL SOURCES:
+  Alamofire:
+    :branch: swift2.3
+    :git: git@github.com:Alamofire/Alamofire.git
+  AlamofireImage:
+    :branch: swift2.3
+    :git: git@github.com:Alamofire/AlamofireImage.git
   Failable:
     :path: ..
+
+CHECKOUT OPTIONS:
+  Alamofire:
+    :commit: 383efdfa68fff8ebb52748c9b22034b326d70459
+    :git: git@github.com:Alamofire/Alamofire.git
+  AlamofireImage:
+    :commit: 84c710f25d8a9782376c8ce4960e0e1b36736609
+    :git: git@github.com:Alamofire/AlamofireImage.git
 
 SPEC CHECKSUMS:
   Alamofire: 01a82e2f6c0f860ade35534c8dd88be61bdef40c
   AlamofireImage: 3ccf3347d9ea24580dc11fb892770a0be6a29826
-  Failable: e3177ffb65254f996c3b1cdcc6e0849b119c1526
+  Failable: 273ab8129cc03446660f029a847a5e14337144eb
   ObjectMapper: 4eb08a726e9791a93b2632049951b56a7c17e471
 
-PODFILE CHECKSUM: 9ebc1ebab37fedfde182d538f18cfa779a5e2814
+PODFILE CHECKSUM: 3b66df898e3882b08bf5a1e0ca1da83e9e2a57af
 
-COCOAPODS: 1.0.0
+COCOAPODS: 1.1.0.beta.1
