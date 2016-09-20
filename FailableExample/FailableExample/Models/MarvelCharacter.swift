@@ -26,17 +26,17 @@
 import Foundation
 import ObjectMapper
 
-public class MarvelCharacter: Mappable {
+open class MarvelCharacter: Mappable {
     var id: Int?
     var name: String?
     var characterDescription: String?
     var modified: Double?
     var thumbnailPath: String?
     var thumbnailExtension: String?
-    var thumbnailURL: NSURL? {
+    var thumbnailURL: URL? {
         if let thumbnailPath = thumbnailPath,
-            thumbnailExtension = thumbnailExtension {
-            return NSURL(string: thumbnailPath + "/standard_large." + thumbnailExtension)
+            let thumbnailExtension = thumbnailExtension {
+            return URL(string: thumbnailPath + "/standard_large." + thumbnailExtension)
         } else {
             return nil
         }
@@ -51,7 +51,7 @@ public class MarvelCharacter: Mappable {
     }
 
     // Mappable
-    public func mapping(map: Map) {
+    open func mapping(_ map: Map) {
         id                      <- map["id"]
         name                    <- map["name"]
         characterDescription    <- map["description"]

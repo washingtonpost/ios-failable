@@ -22,12 +22,12 @@ class Hero {
 
 }
 
-public enum FailableTestError: ErrorType {
-    case FailableExampleError(String)
+public enum FailableTestError: Error {
+    case failableExampleError(String)
 
     public var description: String {
         switch self {
-        case .FailableExampleError(let message):
+        case .failableExampleError(let message):
             return message
         }
     }
@@ -36,7 +36,7 @@ public enum FailableTestError: ErrorType {
 class FailableTests: XCTestCase {
 
     //let error = NSError(domain: "FailableTests", code: 404, userInfo: nil)
-    let error = FailableTestError.FailableExampleError("no batman")
+    let error = FailableTestError.failableExampleError("no batman")
 
     var batman: Hero? {
         return Hero(name: "batman", wearsCape: true)
@@ -46,7 +46,7 @@ class FailableTests: XCTestCase {
 
     func testThatSuccessfulPropertyReturnsTrueForSuccessCase() {
         if let bats = batman {
-            let result = Failable<Hero>.Success(bats)
+            let result = Failable<Hero>.success(bats)
             XCTAssertTrue(result.successful, "result is success should be true for success case")
         }
     }
@@ -55,13 +55,13 @@ class FailableTests: XCTestCase {
 
     func testThatValuePropertyReturnsValueForSuccessCase() {
         if let bats = batman {
-            let result = Failable<Hero>.Success(bats)
+            let result = Failable<Hero>.success(bats)
             XCTAssertNotNil(result.value)
         }
     }
 
     func testThatValuePropertyReturnsNilForFailureCase() {
-        let result = Failable<Hero>.Failure(error)
+        let result = Failable<Hero>.failure(error)
         XCTAssertNil(result.value, "result value should be nil for failure case")
     }
 
@@ -69,13 +69,13 @@ class FailableTests: XCTestCase {
 
     func testThatErrorPropertyReturnsNilForSuccessCase() {
         if let bats = batman {
-            let result = Failable<Hero>.Success(bats)
+            let result = Failable<Hero>.success(bats)
             XCTAssertTrue(result.error == nil, "result error should be nil for success case")
         }
     }
 
     func testThatErrorPropertyReturnsErrorForFailureCase() {
-        let result = Failable<Hero>.Failure(error)
+        let result = Failable<Hero>.failure(error)
         XCTAssertTrue(result.error != nil, "result error should not be nil for failure case")
     }
 
@@ -83,7 +83,7 @@ class FailableTests: XCTestCase {
 
     func testThatDescriptionStringMatchesExpectedValueForSuccessCase() {
         if let bats = batman {
-            let result = Failable<Hero>.Success(bats)
+            let result = Failable<Hero>.success(bats)
             XCTAssertEqual(
                 result.description,
                 "Success: \(bats)",
@@ -93,7 +93,7 @@ class FailableTests: XCTestCase {
     }
 
     func testThatDescriptionStringMatchesExpectedValueForFailureCase() {
-        let result = Failable<Hero>.Failure(error)
+        let result = Failable<Hero>.failure(error)
         XCTAssertEqual(
             result.description,
             "Failure: \(error)",

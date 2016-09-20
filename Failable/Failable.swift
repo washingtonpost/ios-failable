@@ -33,15 +33,15 @@ import Foundation
  - Failure: An error was encountered. The error that caused the failure.
  */
 public enum Failable<T> {
-    case Success(T)
-    case Failure(ErrorType)
+    case success(T)
+    case failure(Error)
 
     /// Returns true if the Failible operation succeeded, or False if it failed.
     public var successful: Bool {
         switch self {
-        case .Success:
+        case .success:
             return true
-        case .Failure:
+        case .failure:
             return false
         }
     }
@@ -49,19 +49,19 @@ public enum Failable<T> {
     /// Retrieves the value, if any, from the Failible instance. If the operation failed, returns nil.
     public var value: T? {
         switch self {
-            case .Success(let x):
+            case .success(let x):
                 return x
-            case .Failure:
+            case .failure:
                 return nil
         }
     }
 
     /// Retrieves the error, if any, from the Failible instance. If the opration succeeded, returns nil.
-    public var error: ErrorType? {
+    public var error: Error? {
         switch self {
-        case .Success:
+        case .success:
             return nil
-        case .Failure(let error):
+        case .failure(let error):
             return error
         }
     }
@@ -72,9 +72,9 @@ public enum Failable<T> {
 extension Failable: CustomStringConvertible {
     public var description: String {
         switch self {
-        case .Success(let x):
+        case .success(let x):
             return "Success: \(x)"
-        case .Failure(let error):
+        case .failure(let error):
             return "Failure: \(error)"
         }
     }
