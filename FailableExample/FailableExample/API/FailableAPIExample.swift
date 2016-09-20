@@ -32,7 +32,7 @@ extension String  {
         let str = self.cString(using: String.Encoding.utf8)
         let strLen = CC_LONG(self.lengthOfBytes(using: String.Encoding.utf8))
         let digestLen = Int(CC_MD5_DIGEST_LENGTH)
-        let result = UnsafeMutablePointer<CUnsignedChar>(allocatingCapacity: digestLen)
+        let result = UnsafeMutablePointer<CUnsignedChar>.allocate(capacity: digestLen)
 
         CC_MD5(str!, strLen, result)
 
@@ -75,19 +75,22 @@ open class FailableAPIExample {
         iniParams["limit"] = "50"
         return iniParams
     }
+
     fileprivate var charactersURLString: String {
         return "\(baseURLString)/v1/public/characters"
     }
 
     open func getMarvelCharacters(_ completion: ((_ data: Failable<[MarvelCharacter]>) -> Void)?) {
-        Alamofire.request(.GET, charactersURLString, parameters: params)
+        Alamofire.request(charactersURLString, method: .get,  parameters: params, encoding: JSONEncoding.default)
             .responseJSON { response in
-                if let JSON = response.result.value,
-                    let data = JSON["data"] as? [String: AnyObject],
-                    let characters = Mapper<MarvelCharacter>().mapArray(data["results"]) {
-                    completion?(data: .Success(characters))
+
+                if let JSON = response.result.value as? [String: AnyObject],
+                   let data = JSON["data"] as? [String: AnyObject],
+                   let results = data["results"] as? String,
+                   let characters = Mapper<MarvelCharacter>().mapArray(JSONString: results) {
+                    completion?(.success(characters))
                 } else {
-                    completion?(data: .Failure(FailableError.FailableExampleError("no results")))
+                    completion?(.failure(FailableError.failableExampleError("no results")))
                 }
         }
     }

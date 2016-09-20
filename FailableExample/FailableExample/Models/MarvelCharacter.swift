@@ -46,12 +46,12 @@ open class MarvelCharacter: Mappable {
     //events (EventList, optional): A resource list of events in which this character appears.,
     //series (SeriesList, optional): A resource list of series in which this character appears.
 
-    required public init?(_ map: Map) {
+    required public init?(map: Map) {
 
     }
 
     // Mappable
-    open func mapping(_ map: Map) {
+    open func mapping(map: Map) {
         id                      <- map["id"]
         name                    <- map["name"]
         characterDescription    <- map["description"]

@@ -90,7 +90,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         if let textLabel = cell.textLabel,
             let imageView = cell.imageView {
                 textLabel.text = name
-                imageView.af_setImageWithURL(imageURL, placeholderImage: UIImage(named: "placeholder"), filter: nil, imageTransition: .None, completion: { (response) -> Void in
+            imageView.af_setImage(withURL: imageURL, placeholderImage: UIImage(named: "placeholder"), filter: nil, imageTransition: .noTransition, completion: { (response) -> Void in
                     // if needed
                 })
         }
