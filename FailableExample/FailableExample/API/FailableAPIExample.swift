@@ -81,13 +81,12 @@ open class FailableAPIExample {
     }
 
     open func getMarvelCharacters(_ completion: ((_ data: Failable<[MarvelCharacter]>) -> Void)?) {
-        Alamofire.request(charactersURLString, method: .get,  parameters: params, encoding: JSONEncoding.default)
+        Alamofire.request(charactersURLString, method: .get,  parameters: params)
             .responseJSON { response in
-
                 if let JSON = response.result.value as? [String: AnyObject],
                    let data = JSON["data"] as? [String: AnyObject],
-                   let results = data["results"] as? String,
-                   let characters = Mapper<MarvelCharacter>().mapArray(JSONString: results) {
+                   let results = data["results"] as? [[String: AnyObject]],
+                   let characters = Mapper<MarvelCharacter>().mapArray(JSONArray: results) {
                     completion?(.success(characters))
                 } else {
                     completion?(.failure(FailableError.failableExampleError("no results")))
