@@ -44,13 +44,13 @@ class ViewController: UIViewController {
             }
 
             switch data {
-                case .Success(let characters):
+                case .success(let characters):
                     strongSelf.charactersArray = characters
-                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    DispatchQueue.main.async(execute: { () -> Void in
                         strongSelf.tableView.reloadData()
                     })
-                case .Failure(let error):
-                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                case .failure(let error):
+                    DispatchQueue.main.async(execute: { () -> Void in
                         if let error = error as? FailableError {
                             strongSelf.presentAlert(error.description)
                         }
@@ -64,33 +64,33 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    func presentAlert(message: String) {
-        let alert = UIAlertController(title: "Error", message: message, preferredStyle: .Alert)
-        let dismiss = UIAlertAction(title: "Ok", style: .Default, handler: nil)
+    func presentAlert(_ message: String) {
+        let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+        let dismiss = UIAlertAction(title: "Ok", style: .default, handler: nil)
         alert.addAction(dismiss)
-        presentViewController(alert, animated: false, completion: nil)
+        present(alert, animated: false, completion: nil)
     }
 }
 
 extension ViewController: UITableViewDataSource, UITableViewDelegate {
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return charactersArray?.count ?? 0
     }
 
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let identifier = "BasicCell"
 
-        let  cell = tableView.dequeueReusableCellWithIdentifier(identifier) ?? UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: identifier)
+        let  cell = tableView.dequeueReusableCell(withIdentifier: identifier) ?? UITableViewCell(style: UITableViewCellStyle.subtitle, reuseIdentifier: identifier)
 
-        guard let name = charactersArray?[indexPath.row].name,
-            imageURL = charactersArray?[indexPath.row].thumbnailURL else {
+        guard let name = charactersArray?[(indexPath as NSIndexPath).row].name,
+            let imageURL = charactersArray?[(indexPath as NSIndexPath).row].thumbnailURL else {
             return cell
         }
 
         if let textLabel = cell.textLabel,
-            imageView = cell.imageView {
+            let imageView = cell.imageView {
                 textLabel.text = name
-                imageView.af_setImageWithURL(imageURL, placeholderImage: UIImage(named: "placeholder"), filter: nil, imageTransition: .None, completion: { (response) -> Void in
+            imageView.af_setImage(withURL: imageURL, placeholderImage: UIImage(named: "placeholder"), filter: nil, imageTransition: .noTransition, completion: { (response) -> Void in
                     // if needed
                 })
         }
@@ -98,7 +98,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         return cell
     }
 
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
     }
 }
