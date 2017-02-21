@@ -9,7 +9,9 @@ Pod::Spec.new do |s|
   s.homepage     = "https://github.com/washingtonpost/ios-failable"
   s.license      = 'MIT'
   s.authors = { 'The Washington Post' => 'iosdevpluscontractors@washpost.com' }
-  s.platform     = :ios, "8.0"
+  
+  s.ios.deployment_target = '8.0'
+
   s.source       = { :git => "https://github.com/washingtonpost/ios-failable.git", :tag => s.version.to_s }
   s.source_files = 'Failable/**/*.swift'
   
