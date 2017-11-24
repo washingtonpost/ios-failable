@@ -8,7 +8,7 @@ use_frameworks!
 target 'FailableExample' do
   pod 'Failable', :path => '..'
   pod 'Alamofire', '~> 4.0'
-  pod 'AlamofireImage', '~> 3.0'
+  pod 'AlamofireImage', '3.3.0'
   pod 'ObjectMapper', '~> 2.0'
 end
 
