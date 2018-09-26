@@ -1,0 +1,18 @@
+platform :ios, '9.0'
+
+source 'https://github.com/CocoaPods/Specs.git'
+
+use_frameworks!
+inhibit_all_warnings!
+
+target 'Example' do
+  pod 'Failable', :inhibit_warnings => false, :path => '..'
+
+  pod 'Alamofire', '~> 4.0'
+  pod 'AlamofireImage', '3.3.0'
+  pod 'ObjectMapper', '~> 3.0'
+end
+
+target 'Tests' do
+  pod 'Failable', :path => '..'
+end

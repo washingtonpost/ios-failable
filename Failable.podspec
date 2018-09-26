@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
   # Meta
   s.name         = "Failable"
-  s.version      = "1.3.0"
+  s.version      = "1.4.0"
   s.swift_version = "4.0"
   s.summary      = "Closure data using Either monad."
   s.description  = <<-DESC
@@ -14,6 +14,7 @@ Pod::Spec.new do |s|
 
   # Deployment
   s.ios.deployment_target = '8.0'
+  s.tvos.deployment_target = '9.0'
   s.watchos.deployment_target = '2.0'
 
   # Source
