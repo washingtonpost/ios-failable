@@ -1,9 +1,10 @@
-platform :ios, '9.0'
-
+# Failable
 source 'https://github.com/CocoaPods/Specs.git'
 
 use_frameworks!
 inhibit_all_warnings!
+
+platform :ios, '9.0'
 
 target 'Example' do
   pod 'Failable', :inhibit_warnings => false, :path => '..'
@@ -14,5 +15,5 @@ target 'Example' do
 end
 
 target 'Tests' do
-  pod 'Failable', :path => '..'
+  pod 'Failable', :inhibit_warnings => false, :path => '..'
 end

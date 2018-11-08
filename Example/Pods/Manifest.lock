@@ -2,7 +2,7 @@ PODS:
   - Alamofire (4.5.1)
   - AlamofireImage (3.3.0):
     - Alamofire (~> 4.5)
-  - Failable (1.4.0)
+  - Failable (1.4.1)
   - ObjectMapper (3.3.0)
 
 DEPENDENCIES:
@@ -24,9 +24,9 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   Alamofire: 2d95912bf4c34f164fdfc335872e8c312acaea4a
   AlamofireImage: 2e784dc5d00f04903a52c1d169181469c805c3df
-  Failable: f3ae704af0689adf2c9194aebe9908450ee9259d
+  Failable: 99da5c77a66bf1042a53586baf3ddc762e8a8c77
   ObjectMapper: b612bf8c8e99c4dc0bb6013a51f7c27966ed5da9
 
-PODFILE CHECKSUM: ba82fcaed9b043ea5e2f791951247d3915a0aaed
+PODFILE CHECKSUM: ca1e3f11e4f25850c32b975cb1fec159490e6099
 
 COCOAPODS: 1.5.3
