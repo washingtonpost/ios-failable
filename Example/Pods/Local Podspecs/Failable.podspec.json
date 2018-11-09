@@ -1,7 +1,6 @@
 {
   "name": "Failable",
-  "version": "1.4.0",
-  "swift_version": "4.0",
+  "version": "1.4.1",
   "summary": "Closure data using Either monad.",
   "description": "An iOS version of Either monad returning either data T or NSError",
   "homepage": "https://github.com/washingtonpost/ios-failable",
@@ -14,9 +13,10 @@
     "tvos": "9.0",
     "watchos": "2.0"
   },
+  "swift_version": "4.2",
   "source": {
     "git": "https://github.com/washingtonpost/ios-failable.git",
-    "tag": "1.4.0"
+    "tag": "1.4.1"
   },
-  "source_files": "Failable/**/*.swift"
+  "source_files": "Sources/**/*.swift"
 }

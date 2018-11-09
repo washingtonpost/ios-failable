@@ -30,7 +30,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1B686E67215AC62E0053F661 /* Failable.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; indentWidth = 2; name = Failable.podspec; path = ../Failable.podspec; sourceTree = "<group>"; tabWidth = 2; };
+		1B686E67215AC62E0053F661 /* Failable.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; indentWidth = 2; name = Failable.podspec; path = ../Failable.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		40315E12CAFE760D3C95ABFC /* Pods-Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-Example/Pods-Example.release.xcconfig"; sourceTree = "<group>"; };
 		5E7BE40D1CF392A9000A2695 /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E7BE4101CF392A9000A2695 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
